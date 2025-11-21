@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Container, Row, Col, Form, Button, Alert, Card, Badge, Spinner, ProgressBar } from 'react-bootstrap'
+import { Container, Row, Col, Form, Button, Alert, Card, Badge, Spinner } from 'react-bootstrap'
 import axe from 'axe-core'
 import './App.css'
 
@@ -98,13 +98,15 @@ function App() {
         })
       } else {
         // For external URLs, we need to use an iframe approach
-        // Note: This will only work for URLs that allow iframe embedding
+        // Note: This will only work for URLs that allow iframe embedding (no X-Frame-Options)
+        // Security: iframe is sandboxed and removed immediately after scanning
         const iframe = document.createElement('iframe')
         iframe.style.display = 'none'
+        iframe.sandbox = 'allow-same-origin allow-scripts' // Minimal permissions for scanning
         iframe.src = url
         document.body.appendChild(iframe)
 
-        // Wait for iframe to load
+        // Wait for iframe to load with timeout
         await new Promise((resolve, reject) => {
           iframe.onload = resolve
           iframe.onerror = () => reject(new Error('Failed to load URL'))
@@ -120,7 +122,7 @@ function App() {
           }
         })
 
-        // Remove iframe
+        // Remove iframe immediately after scanning
         document.body.removeChild(iframe)
       }
 
