@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sample Page with Accessibility Issues</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+        background-color: #ffffff;
+      }
+      .low-contrast {
+        color: #777777;
+        background-color: #ffffff;
+        padding: 10px;
+      }
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+      }
+      button {
+        margin: 10px 5px;
+        padding: 10px 20px;
+      }
+      input {
+        padding: 8px;
+        margin: 5px;
+      }
+      img {
+        max-width: 100%;
+        height: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <!-- Missing lang attribute on html tag (serious issue) -->
+
+      <h1>Sample Test Page</h1>
+
+      <!-- Low contrast text (serious issue) -->
+      <p class="low-contrast">
+        This text has low color contrast and may be difficult to read for users
+        with visual impairments.
+      </p>
+
+      <!-- Skipped heading level (moderate issue) -->
+      <h4>This is an h4 that skips h2 and h3</h4>
+
+      <!-- Images without alt text (critical issue) -->
+      <img
+        src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='100'%3E%3Crect fill='%23007bff' width='200' height='100'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dy='.3em' fill='white' font-size='20'%3ELogo%3C/text%3E%3C/svg%3E"
+      />
+
+      <!-- Form inputs without labels (critical issue) -->
+      <form>
+        <input type="text" name="username" placeholder="Username" />
+        <input type="email" name="email" placeholder="Email" />
+        <input type="password" name="password" placeholder="Password" />
+        <button type="submit">Submit</button>
+      </form>
+
+      <!-- Link without text (serious issue) -->
+      <a href="/next"></a>
+
+      <!-- Button without accessible name (critical issue) -->
+      <button>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          fill="currentColor"
+          viewBox="0 0 16 16"
+        >
+          <path
+            d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"
+          />
+        </svg>
+      </button>
+
+      <h2>About This Page</h2>
+      <p>
+        This page intentionally contains several common accessibility violations
+        that can be detected by the WCAG 2.2 AA Checker tool. Use this page to
+        test the scanner's functionality.
+      </p>
+
+      <h3>Issues Included:</h3>
+      <ul>
+        <li>Missing language declaration</li>
+        <li>Low color contrast text</li>
+        <li>Images without alt attributes</li>
+        <li>Form inputs without labels</li>
+        <li>Links without accessible text</li>
+        <li>Buttons without accessible names</li>
+        <li>Improper heading hierarchy</li>
+      </ul>
+    </div>
+  </body>
+</html>

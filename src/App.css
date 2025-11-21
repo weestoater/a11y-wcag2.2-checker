@@ -1,0 +1,97 @@
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+}
+
+.spinner-border-lg {
+  width: 3rem;
+  height: 3rem;
+}
+
+.violation-card {
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.violation-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.impact-badge {
+  font-size: 0.75rem;
+  padding: 0.35em 0.65em;
+}
+
+.help-link {
+  text-decoration: none;
+}
+
+.help-link:hover {
+  text-decoration: underline;
+}
+
+.priority-indicator {
+  width: 8px;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  border-radius: 0.375rem 0 0 0.375rem;
+}
+
+.priority-critical {
+  background-color: #dc3545;
+}
+
+.priority-serious {
+  background-color: #fd7e14;
+}
+
+.priority-moderate {
+  background-color: #ffc107;
+}
+
+.priority-minor {
+  background-color: #0dcaf0;
+}
+
+.stats-card {
+  background-color: #007bff;
+  color: white;
+}
+
+@media (max-width: 768px) {
+  .display-4 {
+    font-size: 2rem;
+  }
+
+  .lead {
+    font-size: 1rem;
+  }
+}
+
+.code-snippet {
+  background-color: #f8f9fa;
+  border-left: 3px solid #0d6efd;
+  padding: 0.75rem;
+  border-radius: 0.25rem;
+  font-family: "Courier New", monospace;
+  font-size: 0.875rem;
+  overflow-x: auto;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.node-list {
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.accordion-button:not(.collapsed) {
+  background-color: rgba(13, 110, 253, 0.1);
+}
